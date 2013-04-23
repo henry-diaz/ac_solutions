@@ -1,0 +1,2 @@
+if( $("tr[data-edit=true]", "table.table").length == 0 )
+  $("tr[data-id=<%= contact.id %>]", "table.table").replaceWith("<%= escape_javascript(draw_edit_contact_row(customer, contact)) %>")

@@ -1,6 +1,41 @@
 AcSolutions::Application.routes.draw do
-  devise_for :users
-
+  devise_for :users, {
+    path_names: {
+      sign_in: 'login',
+      sign_out: 'logout',
+      password: 'secret',
+      sign_up: 'register'
+    }
+  }
+  resources :purchases do
+    resources :items, :only => [:create, :edit, :update, :destroy]
+    member do
+      get 'search_by_code'
+      get 'search_by_name'
+    end
+  end
+  resources :sales do
+    resources :items, :only => [:create, :edit, :update, :destroy]
+    member do
+      get 'search_by_code'
+      get 'search_by_name'
+    end
+  end
+  resources :members, except: [:show]
+  resources :reports
+  resources :settings
+  resources :appointments
+  resources :customers do
+    resources :contacts, except: [:index, :show, :new, :destroy]
+    collection do
+      get 'find_customers'
+    end
+  end
+  resources :skus, except: [:destroy] do
+    member do
+      get 'toggle'
+    end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,51 @@
+-#
+  %div.errors
+    = draw_flash_messages
+  .clearfix
+  %p.select-task
+    = t("labels.find_customer_to_start")
+  .row.pT10
+    .span4.right.pT10
+      %h5
+        = t("labels.find_customer")
+    .span5.left.find-icon-container
+      = text_field_tag "filter_customer", "", :placeholder => t("labels.write_customer_code_or_name"), :class => "input-find xlarge"
+      = image_tag "icons/find.png", :alt => t("labels.find"), :class => "find-icon", :align => "absmiddle"
+
+  - if sales.size > 0
+    %br
+    %p.select-task
+      = t("labels.sales_of_the_day")
+    .row
+      .span6.offset3
+        %table.table.table-striped.table-condensed
+          %thead
+            %tr
+              %th
+                &nbsp
+              %th
+                = t("labels.hour")
+              %th
+                = t("labels.customer_code")
+              %th
+                = t("labels.customer")
+              %th{ :colspan => 2 }
+                &nbsp
+          %tbody
+            - sales.each do |s|
+              %tr
+                %td.center
+                  = link_to image_tag("icons/flag_#{s.status}.png", :alt => s.get_status), edit_sale_url(s), :class => "shortcut_sale", :title => s.get_status
+                %td.center
+                  = link_to s.created_at.try(:strftime, "%H:%M"), edit_sale_url(s), :class => "shortcut_sale"
+                %td
+                  = link_to s.customer_code, edit_sale_url(s), :class => "shortcut_sale"
+                %td
+                  = link_to s.customer.name, edit_sale_url(s), :class => "shortcut_sale"
+                %td
+                  = link_to image_tag("icons/go.png", :alt => t("labels.go")), edit_sale_url(s), :class => "shortcut_sale", :title => t("labels.go")
+                %td
+                  = link_to image_tag("icons/remove.png", :alt => t("labels.delete")), sale_url(s), :class => "delete_link", :title => t("labels.delete"), :confirm => t("labels.confirm_delete_sale"), :method => :delete
+          %tfoot
+            %tr
+              %td{ :colspan => 6 }

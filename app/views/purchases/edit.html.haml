@@ -1,0 +1,21 @@
+%div.errors
+  = draw_flash_messages
+.row.form-container
+  .span3
+    %h3
+      = t("labels.purchases")
+    = t("labels.purchase_date_value", date: purchase.purchase_date.try(:strftime, "%d/%m/%Y"))
+  .span3
+    %h3
+      = t("labels.bill_number")
+    = text_field_tag "purchase[number]", purchase.number, :'data-href' => purchase_path(purchase), :'data-method' => :put
+  .span3
+    %h3
+      = t("labels.comment")
+    = text_field_tag "purchase[comment]", purchase.comment, :'data-href' => purchase_path(purchase), :'data-method' => :put
+= draw_purchase_table(purchase, @item)
+.clearfix
+  .pull-right
+    = link_to t("labels.back"), purchases_url, :class => "button alternative"
+    = link_to t("labels.finish"), purchases_url, :class => "button"
+#search-results

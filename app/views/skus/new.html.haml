@@ -1,0 +1,13 @@
+%p.select-task
+  = t("labels.new_sku")
+.row
+  .span5.offset2
+    = simple_form_for sku, url: skus_path, html: { class: "form-horizontal", method: :post } do |f|
+      = f.input :code, input_html: { class: "input-medium" }
+      = f.input :name, input_html: { class: "input-large" }
+      = f.input :quantity, input_html: { class: "input-medium" }
+      = f.input :unit_price, input_html: { class: "input-medium" }
+      .control-group
+        .controls.right
+          = link_to t("labels.back"), request.referer || skus_url, :class => "button alternative"
+          = link_to t("labels.save"), "javascript:;", :class => "button submit-this"

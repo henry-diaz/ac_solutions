@@ -1,0 +1,15 @@
+errors = $("div.errors");
+<% if @success %>
+  $("tr[data-id=<%= item.id %>]", "table.table").replaceWith("<%= escape_javascript(draw_item_row(parent, item)) %>");
+  $("td", $("tr[data-id=<%= item.id %>]", "table.table")).effect("highlight", {}, 3000);
+  errors.empty();
+
+  <% if parent.is_a?(Purchase) %>
+    $("tr#purchase-total", "tfoot")
+      .replaceWith("<%= escape_javascript(draw_purchase_footer_sum(parent)) %>");
+  <% end %>
+
+<% else %>
+  errors.html("<%= escape_javascript(draw_errors(item)) %>");
+  $('html,body').animate({scrollTop: errors.offset().top - 25}, 300);
+<% end %>

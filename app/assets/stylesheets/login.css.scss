@@ -1,0 +1,7 @@
+.form-login {
+  text-align: center; width: 420px; margin: 0 auto; color: #666666;
+  label { cursor: pointer; font-size: 16px; }
+  .login-title { width: 118px; height: 36px; line-height: 36px; background: image-url("bg-input-login.png") 0 0 no-repeat; color: white; margin-right: 10px }
+  .remember-me { float: left; width: 60%; text-align: right; padding-top: 14px; }
+  .action { float: right; width: 40%; text-align: right; }
+}

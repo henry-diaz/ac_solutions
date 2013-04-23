@@ -8,5 +8,5 @@
 
 # Create default user
 if User.count == 0
-  User.create first_name: "Admin", last_name: "UDB", email: "henryalberto.diaz@gmail.com", password: "1236547890"
+  User.create first_name: "Admin", last_name: "UDB", email: "henryalberto.diaz@gmail.com", password: "1236547890", role: "admin"
 end

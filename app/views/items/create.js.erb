@@ -1,0 +1,20 @@
+errors = $("div.errors");
+<% if @success.nil? %>
+  errors.html("<%= escape_javascript(draw_flash_messages) %>");
+  $('html,body').animate({scrollTop: errors.offset().top - 25}, 300);
+<% else %>
+  <% unless @success %>
+    errors.html("<%= escape_javascript(draw_errors(@item)) %>");
+    $('html,body').animate({scrollTop: errors.offset().top - 25}, 300);
+  <% else %>
+    $("tbody", "table.table").append("<%= escape_javascript(draw_item_row(parent, @item)) %>");
+    $("tbody tr:last td", "table.table").effect("highlight", {}, 3000);
+    <% if parent.is_a?(Purchase) %>
+      $("tr#purchase-total", "tfoot")
+        .replaceWith("<%= escape_javascript(draw_purchase_footer_sum(parent)) %>");
+    <% end %>
+    errors.empty();
+    $.clear_form($("tr#new_item", "table.table"));
+    $("div#search-results").empty();
+  <% end %>
+<% end %>

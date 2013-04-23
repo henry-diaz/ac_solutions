@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '1.9.3'
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,6 +11,13 @@ gem 'heroku'
 gem 'thin'
 gem 'devise', '~> 2.2.3'
 gem 'haml', '~> 3.1.7'
+gem 'simple_form', '~> 2.0.4'
+gem 'cancan', '~> 1.6.9'
+gem 'compass-rails'
+gem 'bootstrap-sass'
+gem 'will_paginate'
+gem 'ransack'
+gem 'jquery-ui-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

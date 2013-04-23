@@ -1,0 +1,16 @@
+- if local_assigns.has_key?(:parent) and local_assigns.has_key?(:item)
+  %tr.form-container#new_item
+    %td
+      = hidden_field_tag "item[sku_id]", ""
+      = text_field_tag "item_code", "", :class => "input-small", :'data-href' => polymorphic_path(parent, :action => :search_by_code), :autocomplete => "off"
+    %td
+      = text_field_tag "item_name", "", :class => "input-xlarge", :'data-href' => polymorphic_path(parent, :action => :search_by_name)
+    %td.center
+      $
+      = text_field_tag "item[unit_price]", "", :class => "input-mini"
+    %td.center
+      = text_field_tag "item[quantity]", "", :class => "input-mini"
+    %td
+      &nbsp
+    %td{ :colspan => 2 }
+      = link_to t("labels.add"), "javascript:;", :class => "add_link submit-me", :'data-action' => polymorphic_url([parent,item]), :'data-method' => :post

@@ -1,0 +1,203 @@
+@import "bootstrap";
+@import "bootstrap-responsive";
+@import "compass";
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ *= require jquery.ui.datepicker
+ *= require jquery.ui.autocomplete
+ */
+
+body {
+  font-size: 13px;
+  background: linear-gradient(top, #e8ded1, #f4f1ee) no-repeat #f4f1ee;
+  background: -moz-linear-gradient(top, #e8ded1, #f4f1ee) no-repeat #f4f1ee;
+  background: -webkit-linear-gradient(top, #e8ded1, #f4f1ee) no-repeat #f4f1ee;
+  background: -o-linear-gradient(top, #e8ded1, #f4f1ee) no-repeat #f4f1ee;
+  background: -ms-linear-gradient(top, #e8ded1, #f4f1ee) no-repeat #f4f1ee;
+}
+
+.center { text-align: center; }
+.right { text-align: right; }
+
+#content {
+  width: 960px; margin: 10px auto 0; position: relative; color: #1a1a1a;
+  .box-border-left { position: absolute; left: -40px; top: -20px; z-index: -9999; }
+  .box-border-right { position: absolute; right: -40px; top: -20px; z-index: -9999; }
+}
+
+#main-content {
+  border-top: 2px solid #c7ae8f; background: white; padding: 10px; margin-bottom: 3px; min-height: 500px; _height: 500px;
+  .content { background: image-url("bg-content.png") repeat-x 0 0 white; padding-top: 20px; }
+}
+
+#main-header {
+  border-bottom: 2px solid #C7AE8F; padding-bottom: 5px;
+  .logos {
+    float: left; padding-top: 14px;
+    a { padding: 0 11px; }
+  }
+  .menu-login {
+    float: right; margin-right: 10px; padding-top: 23px;
+    a { color: #023262; }
+    a:hover { text-decoration: none; }
+    .dropdown-menu {
+      a { color: #1a1a1a; }
+      a:hover { background: #f0ede1; }
+    }
+  }
+  .menu-shortcuts {
+    float: right; margin-right: 10px; font-size: 11px;
+    a { color: #023262; float: left; padding: 5px 20px; text-align: center; }
+    a:hover, a.active {
+      text-decoration: none;
+      background: linear-gradient(top, #E8DED1, white) no-repeat white;
+      background: -moz-linear-gradient(top, #E8DED1, white) no-repeat white;
+      background: -webkit-linear-gradient(top, #E8DED1, white) no-repeat white;
+      background: -o-linear-gradient(top, #E8DED1, white) no-repeat white;
+      background: -ms-linear-gradient(top, #E8DED1, white) no-repeat white;
+      @include border-radius(5px);
+    }
+    a.warehouse { padding: 5px 15px; }
+  }
+}
+
+.select-task { color: #4d4d4d; text-align: center; font-size: 14px; margin-bottom: 15px; }
+
+.tasks {
+  margin-top: 15px;
+  a { 
+    color: #023262; float: left; font-size: 17px; padding: 15px 40px; position: relative; text-align: center; border-width: 1px; border: 2px solid transparent;
+    @include border-radius(10px);
+    img.play { position: absolute; top: 30%; left: 37%; display: none; }
+  }
+  a:hover {
+    text-decoration: none;
+    border: 2px solid #d4aa00;
+    background: image-url("modules/bg-go-module.png") center center no-repeat transparent;
+    img.play { display: block; }
+  }
+  a.warehouse { padding: 15px 32px; }
+  a.admin { padding: 15px; }
+  a.grocer { padding: 15px 60px; }
+}
+
+h3 { font-size: 17px; color: #023262; font-weight: normal; }
+
+input.xlarge {
+  border: 1px solid #4c5f71; height: 37px; background: image-url("bg-input.png") repeat-x 0px 0px #ffffff; padding: 0 2px;
+  @include border-radius(5px);
+  @include box-shadow(0px -1px 0px #777777);
+}
+
+a.button, input.button {
+  @include border-radius(4px);
+  @include background-image(linear-gradient(#bba775, #7d6a38));
+  @include box-shadow(0 3px 10px #888888);
+  border: 1px solid #365932;
+  color: #ffffff;
+  text-align: center;
+  padding: 4px 10px;
+}
+
+a.button-large, input.button-large {
+  text-transform: uppercase;
+  @include text-shadow(0 -2px 0 rgba(0, 0, 0, 0.5));
+  font-size: 18px;
+  height: 47px;
+  padding: 4px 20px;
+  font-weight: bolder;
+}
+
+a.button:hover { text-decoration: none; }
+
+input.alternative, a.alternative {
+  @include background-image(linear-gradient(#dad9d9, #b3b3b3));
+  color: #4d4d4d;
+  border: 1px solid #666666;
+  margin-right: 15px;
+}
+input.alternative { height: 33px; }
+
+.table {
+  font-size: 12px; margin-bottom: 10px;
+  thead {
+    th {
+      background: image-url("bg-table-head.png") repeat-x 0 0 transparent;
+      height: 38px;
+      font-weight: bolder;
+      vertical-align: middle;
+      text-align: center;
+      padding: 0;
+    }
+  }
+  thead.separate th { padding: 0 5px; }
+  thead.large {
+    tr { border-top: 1px solid #cfcfcf; }
+    th { background: image-url("bg-table-head-without-border.png") repeat-x 0 bottom #ffffff; min-height: 38px; _height: 38px; }
+  }
+  tbody {
+    td, th { background-color: #f0ede1; vertical-align: middle; }
+
+    td.red { color: #F44C4A; }
+
+    td.green { color: #338000; }
+
+    td.yellow { color: #E3C904; }
+
+    tr:nth-child(2n+1) td, tr:nth-child(2n+1) th { background-color: #ffffff; }
+
+    tr:hover td { background-color: #b8a86f; }
+  }
+  tfoot {
+    td.table-separator { background: #eaeaea; }
+    td { vertical-align: middle; }
+    input { margin: 5px 0; }
+    td.grey label { background: #ececec; height: 25px; text-align: center; margin: 0; }
+  }
+
+  tr {
+    cursor: pointer;
+    td.center, th.center { text-align: center; }
+    td.right { text-align: right; }
+  }
+
+  input { margin: 0; }
+}
+
+.edit_link { padding-left: 20px; background: image-url("icons/edit.png") 0 0 no-repeat transparent; }
+
+.save_link { padding-left: 20px; background: image-url("icons/save.png") 0 0 no-repeat transparent; }
+
+.remove_link { padding-left: 20px; background: image-url("icons/remove.png") 0 0 no-repeat transparent; color: #f44c4a; }
+.remove_link:hover { color: #ce0b0b; }
+
+.add_link { padding-left: 20px; background: image-url("icons/add.png") 0 0 no-repeat transparent; color: #338000; }
+.add_link:hover { color: #42a500; }
+
+span.negative { color: #ff0000; }
+
+#search-results {
+  margin-top: 20px;
+  table {
+    width: 100%;
+    tr td { background: #ffffff; padding: 3px; }
+    tr:nth-child(2n+1) td { background-color: #ececec; }
+  }
+  h3 { margin-bottom: 5px; }
+}
+
+.find-icon-container{
+  position: relative;
+  input { padding-right: 30px; width: 250px; }
+  .find-icon { position: absolute; top: 9px; left: 248px; }
+}

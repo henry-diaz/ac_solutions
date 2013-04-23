@@ -1,0 +1,12 @@
+%p.select-task
+  = t("labels.new_purchase", date: l(Date.today, format: :short))
+.row
+  .span5.offset2
+    = simple_form_for purchase, url: purchases_path, html: { class: "form-horizontal", method: :post } do |f|
+      = f.input :number, input_html: { class: "input-medium" }
+      = f.input :comment, input_html: { class: "input-large" }
+      = f.input :purchase_date, as: :hidden, input_html: { value: Date.today }
+      .control-group
+        .controls.right
+          = link_to t("labels.back"), purchases.size > 0 ? purchases_url : root_url, :class => "button alternative"
+          = link_to t("labels.save"), "javascript:;", :class => "button submit-this"

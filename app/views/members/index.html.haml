@@ -1,0 +1,6 @@
+%p.select-task
+  = t("labels.manage_users")
+%div.errors
+  = draw_flash_messages
+#list-users
+  = draw_members(@members)

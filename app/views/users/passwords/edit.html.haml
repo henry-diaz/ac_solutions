@@ -1,0 +1,25 @@
+.form-login
+  = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :class => 'form-inline', :method => :put }) do |f|
+    .errors
+      = draw_errors resource
+    = f.hidden_field :reset_password_token
+    = f.label :password, t("labels.password"), :class => "login-title"
+    = f.password_field :password, :class => "input-xlarge xlarge", :placeholder => t("labels.empty_password_no_change")
+    %br
+    %br
+    = f.label :password_confirmation, t("labels.confirm"), :class => "login-title"
+    = f.password_field :password_confirmation, :class => "input-xlarge xlarge"
+    %br
+    %br
+    .clearfix
+      .action
+        = f.submit t("labels.update"), :class => "button button-large"
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+.pull-right
+  = link_to "&laquo; #{t("labels.sign_in")}".html_safe, new_session_path(resource_name)

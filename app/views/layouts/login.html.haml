@@ -1,0 +1,27 @@
+!!! 5
+%html
+  %head
+    %title
+      Soluciones AC
+    %meta{ :"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8" }
+    = csrf_meta_tag
+    = stylesheet_link_tag 'application', 'login'
+    = javascript_include_tag 'application'
+  %body
+    #content
+      = image_tag("box-content-left.png", :class => "box-border-left")
+      = image_tag("box-content-right.png", :class => "box-border-right")
+      #main-content.clearfix
+        .center
+          %br
+          = image_tag("logo-small.png", :alt => t("labels.ac_solutions"), :title => t("labels.ac_solutions"), :class => "main-logo")
+          %br
+          %br
+        = draw_flash_messages
+        = yield
+      #footer.clearfix
+        .pull-left
+          = image_tag("logo_udb.jpeg", :alt => t("labels.udb"), :title => t("labels.udb"))
+          = t("labels.copyright")
+        .pull-right
+          &nbsp

@@ -1,0 +1,109 @@
+es:
+  hello_world: Hola mundo
+  labels:
+    ac_solutions: Soluciones AC
+    active: Activo
+    activate: Activar
+    add: Agregar
+    address: Dirección
+    adjustment_create: Inventario inicial
+    adjustment_edit: Inventario modificado
+    admin: Administrador
+    appointments: Citas
+    back: Regresar
+    bill_number: Número de factura
+    charge: Cargo
+    code: Código
+    comment: Comentario
+    company: Empresa
+    confirm: Confirmar
+    confirm_delete_customer: ¿Esta seguro(a) que desea eliminar este cliente y toda su información asociada?
+    confirm_delete_item: ¿Esta seguro(a) que desea eliminar este item?
+    confirm_delete_purchase: ¿Esta seguro(a) que desea eliminar esta compra?
+    confirm_delete_sale: ¿Esta seguro(a) que desea eliminar esta venta y toda la información asociada?
+    confirm_delete_user: ¿Esta seguro(a) que desea eliminar este usuario y toda su información asociada?
+    copyright: Escuela de Computación, Universidad Don Bosco 2013.
+    customer: Cliente
+    customer_added_succesfully: Cliente agregado satisfactoriamente
+    customer_contacts: Contactos del cliente
+    customer_deleted_succesfully: Cliente eliminado satisfactoriamente
+    customer_updated_succesfully: Cliente actualizado satisfactoriamente
+    customers: Clientes
+    deactivate: Desactivar
+    delete: Eliminar
+    edit: Editar
+    edit_contacts: Editar contactos
+    edit_customer: Editar cliente
+    edit_sku: Editar producto
+    edit_user: Editar usuario
+    email: Correo
+    empty_password_no_change: En blanco para no actualizarla
+    enter_your_email: Ingrese su correo
+    error_save: "Se encontraron %{count} error(es)"
+    find: Buscar
+    find_customer: Buscar cliente
+    find_customer_to_start: Para iniciar el proceso busque un cliente
+    finish: Finalizar
+    first_name: Nombres
+    go: Ir
+    i_forgot_my_password: He olvidado mi contraseña
+    item_already_exist: Ya agrego el item a la lista
+    inactive: Inactivo
+    kind: Tipo
+    last_name: Apellidos
+    leave: Salir
+    manage_appointments: Administrar citas
+    manage_customers: Administrar clientes
+    manage_general_settings: Administrar configuraciones generales
+    manage_skus: Administrar productos
+    manage_users: Administrar usuarios
+    name: Nombre
+    new_purchase: "Nueva compra %{date}"
+    natural_person: Persona natural
+    new_customer: Nuevo cliente
+    new_sku: Nuevo producto
+    new_user: Nuevo usuario
+    operator: Operador
+    password: Contraseña
+    password_confirmation: Confirmar contraseña
+    please_enter_a_valid_mail: "Por favor ingrese un formato válido. Ejemplo: usuario@dominio.com"
+    phone: Teléfono
+    price: Precio unitario
+    purchase: Compra
+    purchase_deleted_succesfully: Compra eliminada satisfactoriamente
+    purchase_date_value: "Fecha de la compra: %{date}"
+    purchases: Compras
+    quantity: Cantidad
+    remember_me: Recordar contraseña
+    reports: Reportes
+    role: Rol
+    sale_deleted_succesfully: Venta eliminada satisfactoriamente
+    sale_price: Precio de venta
+    sales: Ventas
+    sales_of_the_day: Ventas del día
+    save: Guardar
+    select: Seleccione
+    select_the_task: Seleccione la tarea que desea realizar
+    send: Enviar
+    settings: Configuraciones
+    shopping: Compras
+    sign_in: Ingresar
+    sku_added_succesfully: Producto agregado satisfactoriamente
+    sku_code: Código producto
+    sku_deleted_succesfully: Producto eliminado satisfactoriamente
+    sku_name: Nombre producto
+    sku_updated_succesfully: Producto actualizado satisfactoriamente
+    skus: Productos
+    status: Estado
+    subtotal: Sub-total
+    today_purchases: Compras del día
+    total: Total
+    udb: Universidad Don Bosco
+    update: Actualizar
+    user: Usuario
+    user_added_succesfully: Usuario agregado satisfactoriamente
+    user_deleted_succesfully: Usuario eliminado satisfactoriamente
+    user_updated_succesfully: Usuario actualizado satisfactoriamente
+    users: Usuarios
+    welcome: Bienvenido
+    write_customer_code_or_name: Escriba el nombre ó código del cliente

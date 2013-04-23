@@ -1,0 +1,16 @@
+- if local_assigns.has_key?(:customer)
+  %tr.form-container#new_item
+    %td.table-separator
+      &nbsp
+    %td.table-separator
+      = text_field_tag "contact[first_name]", "", class: "input-medium"
+    %td.table-separator
+      = text_field_tag "contact[last_name]", "", class: "input-medium"
+    %td.table-separator
+      = collection_select(:contact, :charge_id, Charge.all, :id, :name, { include_blank: t("labels.select") }, { style: "margin: 0;" })
+    %td.table-separator
+      = text_field_tag "contact[phone]", "", class: "input-small"
+    %td.table-separator
+      = text_field_tag "contact[email]", "", class: "input-small"
+    %td.table-separator
+      = link_to t("labels.add"), "javascript:;", class: "add_link submit-me", data: { action: customer_contacts_url(customer), method: :post }

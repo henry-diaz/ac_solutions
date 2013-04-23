@@ -1,0 +1,4 @@
+<% if @success %>
+  $("tr[data-id=<%= sku.id %>]").replaceWith("<%= escape_javascript(draw_sku(sku)) %>");
+  $("td", $("tr[data-id=<%= sku.id %>]", "table.table")).effect("highlight", {}, 3000);
+<% end %>

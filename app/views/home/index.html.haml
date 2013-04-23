@@ -1,2 +1,54 @@
-%h2
-  = "Bienvenido #{current_user.full_name}"
+%p.select-task
+  = t("labels.select_the_task")
+
+%br
+%br
+.center
+  = image_tag("http://cambelt.co/500x145/Dashboard+Pendiente", :alt => "Pendiente").html_safe
+%br
+%br
+
+.tasks.clearfix
+
+  - if current_user.role?(:admin)
+    = link_to(members_url, :class => "task #{current_user.role}", :title => t("labels.manage_users")) do
+      = image_tag("modules/bg-go-module.png", :class => "play")
+      = image_tag("modules/users-icon.png", :alt => t("labels.manage_users"))
+      %br
+      = t("labels.users")
+
+  = link_to(customers_url, :class => "task #{current_user.role}", :title => t("labels.manage_customers")) do
+    = image_tag("modules/bg-go-module.png", :class => "play")
+    = image_tag("modules/customers-icon.png", :alt => t("labels.manage_customers"))
+    %br
+    = t("labels.customers")
+
+  = link_to(skus_url, :class => "task #{current_user.role}", :title => t("labels.manage_skus")) do
+    = image_tag("modules/bg-go-module.png", :class => "play")
+    = image_tag("modules/stock-icon.png", :alt => t("labels.manage_skus"))
+    %br
+    = t("labels.skus")
+
+  = link_to(purchases_url, :class => "task #{current_user.role}", :title => t("labels.shopping")) do
+    = image_tag("modules/bg-go-module.png", :class => "play")
+    = image_tag("modules/purchases-icon.png", :alt => t("labels.shopping"))
+    %br
+    = t("labels.shopping")
+
+  = link_to(sales_url, :class => "task #{current_user.role}", :title => t("labels.sales")) do
+    = image_tag("modules/bg-go-module.png", :class => "play")
+    = image_tag("modules/sales-icon.png", :alt => t("labels.sales"))
+    %br
+    = t("labels.sales")
+
+  = link_to(appointments_url, :class => "task #{current_user.role}", :title => t("labels.appointments")) do
+    = image_tag("modules/bg-go-module.png", :class => "play")
+    = image_tag("modules/appointments-icon.png", :alt => t("labels.manage_appointments"))
+    %br
+    = t("labels.appointments")
+
+  = link_to(reports_url, :class => "task #{current_user.role}", :title => t("labels.reports")) do
+    = image_tag("modules/bg-go-module.png", :class => "play")
+    = image_tag("modules/reports-icon.png", :alt => t("labels.reports"))
+    %br
+    = t("labels.reports")

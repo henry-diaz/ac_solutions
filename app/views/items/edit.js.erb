@@ -1,0 +1,2 @@
+if( $("tr[data-edit=true]", "table.table").length == 0 )
+  $("tr[data-id=<%= item.id %>]", "table.table").replaceWith("<%= escape_javascript(draw_edit_item_row(parent, item)) %>")

@@ -1,0 +1,9 @@
+errors = $("div.errors");
+<% unless @success %>
+  errors.html("<%= escape_javascript(draw_errors(contact)) %>");
+  $('html,body').animate({scrollTop: errors.offset().top - 25}, 300);
+<% else %>
+  $("tr[data-id=<%= contact.id %>]", "table.table").replaceWith("<%= escape_javascript(draw_contact_row(customer, contact)) %>");
+  $("td", $("tr[data-id=<%= contact.id %>]", "table.table")).effect("highlight", {}, 3000);
+  errors.empty();
+<% end %>

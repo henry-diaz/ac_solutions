@@ -1,0 +1,32 @@
+- if purchases.size > 0
+  %p.select-task
+    = t("labels.today_purchases")
+  .row
+    .span6.offset2
+      .errors
+        = draw_flash_messages
+      .clearfix
+        = link_to t("labels.add"), new_purchase_url, class: "add_link pull-right"
+      %table.table.table-striped.table-condensed
+        %thead
+          %tr
+            %th
+              = t("labels.bill_number")
+            %th
+              = t("labels.comment")
+            %th{ :colspan => 2 }
+              &nbsp
+        %tbody
+          - purchases.each do |p|
+            %tr{ :'data-number' => p.number }
+              %td.center
+                = link_to p.number, edit_purchase_url(p), :class => "shortcut_sale"
+              %td
+                = link_to truncate(p.comment, :length => 50), edit_purchase_url(p), :class => "shortcut_sale"
+              %td
+                = link_to image_tag("icons/go.png", :alt => t("labels.go")), edit_purchase_url(p), :class => "shortcut_sale", :title => t("labels.go")
+              %td
+                = link_to image_tag("icons/remove.png", :alt => t("labels.delete")), purchase_url(p), :class => "delete_link", :title => t("labels.delete"), :confirm => t("labels.confirm_delete_purchase"), :method => :delete
+        %tfoot
+          %tr
+            %td{ :colspan => 4 }

@@ -1,0 +1,6 @@
+%p.select-task
+  = t("labels.manage_skus")
+%div.errors
+  = draw_flash_messages
+#list-skus
+  = draw_skus(@skus)

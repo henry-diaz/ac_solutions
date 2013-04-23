@@ -1,0 +1,24 @@
+!!! 5
+%html
+  %head
+    %title
+      Soluciones AC
+    %meta{ :"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8" }
+    = csrf_meta_tag
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+  %body
+    #content
+      = image_tag("box-content-left.png", :class => "box-border-left")
+      = image_tag("box-content-right.png", :class => "box-border-right")
+      #main-content
+        = draw_main_header
+        .content
+          = yield
+      #footer.clearfix
+        .pull-left
+          = image_tag("logo_udb.jpeg", :alt => t("labels.udb"), :title => t("labels.udb"))
+          = t("labels.copyright")
+        .pull-right
+          &nbsp
+    #modal

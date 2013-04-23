@@ -1,0 +1,10 @@
+errors = $("div.errors");
+<% unless @success %>
+  errors.html("<%= escape_javascript(draw_errors(contact)) %>");
+  $('html,body').animate({scrollTop: errors.offset().top - 25}, 300);
+<% else %>
+  $("tbody", "table.table").append("<%= escape_javascript(draw_contact_row(customer, contact)) %>");
+  $("tbody tr:last td", "table.table").effect("highlight", {}, 3000);
+  errors.empty();
+  $.clear_form($("tr#new_item", "table.table"));
+<% end %>

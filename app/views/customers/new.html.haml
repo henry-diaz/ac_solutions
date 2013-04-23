@@ -1,0 +1,15 @@
+%p.select-task
+  = t("labels.new_customer")
+.row
+  .span8.offset1
+    = simple_form_for customer, url: customers_path, html: { class: "form-horizontal", method: :post } do |f|
+      = f.input :code, input_html: { class: "input-medium" }
+      = f.input :kind, as: :select, collection: Customer::KIND.invert, include_blank: t("labels.select"), input_html: { class: "input-medium" }
+      = f.input :name, input_html: { class: "input-large" }
+      = f.input :phone, input_html: { class: "input-medium" }
+      = f.input :address, input_html: { class: "input-xxlarge", rows: 3 }
+      = f.input :description, input_html: { class: "input-xxlarge", rows: 3 }
+      .control-group
+        .controls.right
+          = link_to t("labels.back"), request.referer || customers_url, :class => "button alternative"
+          = link_to t("labels.save"), "javascript:;", :class => "button submit-this"
