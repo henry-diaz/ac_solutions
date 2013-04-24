@@ -1,6 +1,3 @@
-@import "bootstrap";
-@import "bootstrap-responsive";
-@import "compass";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -16,6 +13,10 @@
  *= require jquery.ui.datepicker
  *= require jquery.ui.autocomplete
  */
+
+@import "bootstrap";
+@import "bootstrap-responsive";
+@import "compass";
 
 body {
   font-size: 13px;
@@ -91,7 +92,7 @@ body {
   a.grocer { padding: 15px 60px; }
 }
 
-h3 { font-size: 17px; color: #023262; font-weight: normal; }
+h3 { font-size: 17px; color: #023262; font-weight: normal; line-height: 120%; margin: 0; }
 
 input.xlarge {
   border: 1px solid #4c5f71; height: 37px; background: image-url("bg-input.png") repeat-x 0px 0px #ffffff; padding: 0 2px;
@@ -184,6 +185,7 @@ input.alternative { height: 33px; }
 .add_link { padding-left: 20px; background: image-url("icons/add.png") 0 0 no-repeat transparent; color: #338000; }
 .add_link:hover { color: #42a500; }
 
+span.info { color: #023262; }
 span.negative { color: #ff0000; }
 
 #search-results {

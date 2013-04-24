@@ -38,12 +38,12 @@ class PurchasesController < ApplicationController
   end
 
   def search_by_code
-    @search = Sku.where(code: params[:item_code]).first rescue nil
+    @search = Sku.active.where(code: params[:item_code]).first rescue nil
     render :json => { :success => true, :sku => @search.as_json( only: [:code, :name], methods: [:sku_id] ) }
   end
 
   def search_by_name
-    @search = Sku.where("name ilike ?", "%#{params[:item_name].gsub(' ', '%')}%").order("skus.code ASC")
+    @search = Sku.active.where("name ilike ?", "%#{params[:item_name].gsub(' ', '%')}%").order("skus.code ASC")
     render :json => { :success => true, :skus => @search.as_json( :only => [:code, :name], :methods => [:sku_id] ) }
   end
 

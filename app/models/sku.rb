@@ -14,6 +14,7 @@ class Sku < ActiveRecord::Base
 
   # scope
   scope :active, where(active: ACTIVE)
+  scope :with_stock, where("skus.quantity > 0")
 
   # validations
   validates :quantity, presence: true, numericality: { greater_than: 0, less_than: 1000000, only_integer: true }
@@ -22,7 +23,7 @@ class Sku < ActiveRecord::Base
   validates :unit_price, presence: true, numericality: { greater_than: 0, less_than: 1000000 }
 
   # callbacks
-  before_create :first_adjustment
+  after_create :first_adjustment
   before_update :edit_adjustment
 
   # methods

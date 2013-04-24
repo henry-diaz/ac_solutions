@@ -1,8 +1,10 @@
 class SalesController < ApplicationController
   before_filter :authenticate_user!
+  skip_before_filter :verify_authenticity_token, :only => [:create]
   respond_to :html
 
   def create
+    sale.assign_attributes(customer_id: params[:customer_id], sale_date: Date.today)
     if sale.save
       redirect_to edit_sale_url(sale) and return
     else
@@ -34,13 +36,13 @@ class SalesController < ApplicationController
   end
 
   def search_by_code
-    @search = Sku.where(code: params[:item_code]).first rescue nil
-    render :json => { :success => true, :sku => @search.as_json( only: [:code, :name], methods: [:sku_id] ) }
+    @search = Sku.active.with_stock.where(code: params[:item_code]).first rescue nil
+    render :json => { :success => true, :sku => @search.as_json( only: [:code, :name, :unit_price], methods: [:sku_id] ) }
   end
 
   def search_by_name
-    @search = Sku.where("name ilike ?", "%#{params[:item_name].gsub(' ', '%')}%").order("skus.code ASC")
-    render :json => { :success => true, :skus => @search.as_json( :only => [:code, :name], :methods => [:sku_id] ) }
+    @search = Sku.active.with_stock.where("name ilike ?", "%#{params[:item_name].gsub(' ', '%')}%").order("skus.code ASC")
+    render :json => { :success => true, :skus => @search.as_json( :only => [:code, :name, :unit_price], :methods => [:sku_id] ) }
   end
 
   private

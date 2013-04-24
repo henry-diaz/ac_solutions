@@ -7,6 +7,9 @@ errors = $("div.errors");
   <% if parent.is_a?(Purchase) %>
     $("tr#purchase-total", "tfoot")
       .replaceWith("<%= escape_javascript(draw_purchase_footer_sum(parent)) %>");
+  <% elsif parent.is_a?(Sale) %>
+    $("tr#sale-total", "tfoot")
+      .replaceWith("<%= escape_javascript(draw_sale_footer_sum(parent)) %>");
   <% end %>
 
 <% else %>

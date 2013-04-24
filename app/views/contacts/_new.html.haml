@@ -7,7 +7,7 @@
     %td.table-separator
       = text_field_tag "contact[last_name]", "", class: "input-medium"
     %td.table-separator
-      = collection_select(:contact, :charge_id, Charge.all, :id, :name, { include_blank: t("labels.select") }, { style: "margin: 0;" })
+      = collection_select(:contact, :charge_id, Charge.all, :id, :name, { include_blank: t("labels.select") }, { style: "margin: 0;", class: "input-medium" })
     %td.table-separator
       = text_field_tag "contact[phone]", "", class: "input-small"
     %td.table-separator

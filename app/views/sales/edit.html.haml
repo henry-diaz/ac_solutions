@@ -1,0 +1,20 @@
+%div.errors
+  = draw_flash_messages
+.clearfix
+  .pull-left
+    %h3
+      = t("labels.sales")
+    = t("labels.customer")
+    %span.info
+      = sale.customer_name
+    = "&nbsp;&nbsp;|&nbsp;&nbsp;".html_safe
+    = t("labels.date")
+    %span.info
+      = sale.sale_date.try(:strftime, "%d/%m/%Y")
+%br
+= draw_sale_table(sale, @item)
+.clearfix
+  .pull-right
+    = link_to t("labels.back"), sales_url, :class => "button alternative"
+    = link_to t("labels.finish"), sales_url, :class => "button"
+#search-results

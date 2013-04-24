@@ -50,7 +50,7 @@ module ContactsHelper
     rsl << %(<td>#{check_box("contact", "active", { checked: contact.active == 1 ? true : nil } , 1, 0)}</td>)
     rsl << %(<td>#{text_field_tag("contact[first_name]", contact.first_name, :class => "input-medium")}</td>)
     rsl << %(<td>#{text_field_tag("contact[last_name]", contact.last_name, :class => "input-medium")}</td>)
-    rsl << %(<td>#{collection_select(:contact, :charge_id, Charge.all, :id, :name, { include_blank: t("labels.select"), selected: contact.charge_id }, { style: "margin: 0;" })}</td>)
+    rsl << %(<td>#{collection_select(:contact, :charge_id, Charge.all, :id, :name, { include_blank: t("labels.select"), selected: contact.charge_id }, { style: "margin: 0;", class: "input-medium" })}</td>)
     rsl << %(<td>#{text_field_tag("contact[phone]", contact.phone, :class => "input-small")}</td>)
     rsl << %(<td>#{text_field_tag("contact[email]", contact.email, :class => "input-small")}</td>)
     rsl << %(<td>#{link_to(t("labels.update"), "javascript:;", class: "save_link submit-me", data: { action: customer_contact_path(customer, contact), method: :put })}</td>)

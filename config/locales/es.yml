@@ -25,10 +25,13 @@ es:
     copyright: Escuela de Computación, Universidad Don Bosco 2013.
     customer: Cliente
     customer_added_succesfully: Cliente agregado satisfactoriamente
+    customer_code: Código del cliente
     customer_contacts: Contactos del cliente
     customer_deleted_succesfully: Cliente eliminado satisfactoriamente
+    customer_name: Nombre del cliente
     customer_updated_succesfully: Cliente actualizado satisfactoriamente
     customers: Clientes
+    date: Fecha
     deactivate: Desactivar
     delete: Eliminar
     edit: Editar
@@ -46,6 +49,7 @@ es:
     finish: Finalizar
     first_name: Nombres
     go: Ir
+    hour: Hora
     i_forgot_my_password: He olvidado mi contraseña
     item_already_exist: Ya agrego el item a la lista
     inactive: Inactivo
@@ -64,6 +68,7 @@ es:
     new_sku: Nuevo producto
     new_user: Nuevo usuario
     operator: Operador
+    out_of_sale_range: "excede el maximo de stock en inventario (%{number})"
     password: Contraseña
     password_confirmation: Confirmar contraseña
     please_enter_a_valid_mail: "Por favor ingrese un formato válido. Ejemplo: usuario@dominio.com"
@@ -75,10 +80,12 @@ es:
     purchases: Compras
     quantity: Cantidad
     remember_me: Recordar contraseña
+    remove: Eliminar
     reports: Reportes
     role: Rol
     sale_deleted_succesfully: Venta eliminada satisfactoriamente
     sale_price: Precio de venta
+    sale: Venta
     sales: Ventas
     sales_of_the_day: Ventas del día
     save: Guardar

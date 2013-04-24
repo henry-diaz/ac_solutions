@@ -25,6 +25,9 @@ class Customer < ActiveRecord::Base
       parent.table[:name])
   end
 
+  # scopes
+  scope :active, where(active: ACTIVE)
+
   # methods
   def status
     STATUS[active] || ""
