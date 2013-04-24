@@ -16,7 +16,7 @@ class Customer < ActiveRecord::Base
   validates :name, :kind, :phone, :address, presence: true
   validates :name, :phone, length: { maximum: 200 }
   validates :kind, inclusion: { in: KIND.keys }
-  validates :code, uniqueness: true
+  validates :code, uniqueness: true, presence: true, length: { within: 4 .. 20 }
 
   # ransacker
   ransacker :info do |parent|

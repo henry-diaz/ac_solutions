@@ -11,7 +11,7 @@
       = f.input :description, input_html: { class: "input-xxlarge", rows: 3 }
       .control-group
         .controls.right
-          = link_to t("labels.back"), request.referer || customers_url, :class => "button alternative"
+          = link_to t("labels.back"), customers_url, :class => "button alternative"
           = link_to t("labels.update"), "javascript:;", :class => "button submit-this"
 %p.select-task
   = t("labels.customer_contacts")
