@@ -7,6 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Create default user
-if User.count == 0
-  User.create first_name: "Admin", last_name: "UDB", email: "henryalberto.diaz@gmail.com", password: "1236547890", role: "admin"
-end
+User.destroy_all
+User.create first_name: "Henry", last_name: "Diaz", email: "henryalberto.diaz@gmail.com", password: "123456789", role: "admin"
+User.create first_name: "Emely", last_name: "Hernandez", email: "aleca_eh@hotmail.com", password: "123456789", role: "admin"
