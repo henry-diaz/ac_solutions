@@ -18,6 +18,7 @@ gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'ransack'
 gem 'jquery-ui-rails'
+gem 'exception_notification', '~> 2.6.1'
 
 # Gems used only for assets and not required
 # in production environments by default.
