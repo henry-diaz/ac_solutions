@@ -1,0 +1,4 @@
+<% if @success %>
+  $("tr[data-id=<%= service.id %>]").replaceWith("<%= escape_javascript(draw_service(service)) %>");
+  $("td", $("tr[data-id=<%= service.id %>]", "table.table")).effect("highlight", {}, 3000);
+<% end %>

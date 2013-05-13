@@ -1,7 +1,8 @@
 - if local_assigns.has_key?(:parent) and local_assigns.has_key?(:item)
   %tr.form-container#new_item
     %td
-      = hidden_field_tag "item[sku_id]", ""
+      = hidden_field_tag "item[itemable_id]", ""
+      = hidden_field_tag "item[itemable_type]", ""
       = text_field_tag "item_code", "", :class => "input-small", :'data-href' => polymorphic_path(parent, :action => :search_by_code), :autocomplete => "off"
     %td
       = text_field_tag "item_name", "", :class => "input-xlarge", :'data-href' => polymorphic_path(parent, :action => :search_by_name)

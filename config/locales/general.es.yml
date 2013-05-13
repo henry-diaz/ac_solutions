@@ -73,6 +73,7 @@ es:
         kind: Tipo
         name: Nombre
         phone: Teléfono
+        email: Correo electrónico
       contact:
         first_name: Nombres
         last_name: Apellidos
@@ -85,12 +86,30 @@ es:
         name: Nombre
         quantity: Cantidad
         unit_price: Precio unitario
+        kind: Tipo
       purchase:
-        number: Número de factura
+        number: Número
         comment: Comentario
+        kind: Tipo
+      sale:
+        kind: Tipo
+        number: Número
       item:
         quantity: Cantidad
         unit_price: Precio unitario
+      service:
+        code: Código
+        name: Nombre
+        unit_price: Precio base
+        description: Descripción
+      appointment:
+        customer_id: Cliente
+        name: Nombre
+        description: Descripción
+        address: Dirección
+        start_at: Fecha y hora
+        come: Vienen?
+        users: Participantes
  # Active Support
   date:
     formats:
@@ -102,7 +121,7 @@ es:
       long: "%d de %B de %Y"
       full: "%A %d de %B de %Y"
       standar: "%d - %B - %Y"
-      month_and_year: "%B - %Y"
+      month_and_year: "%B %Y"
       day_and_month: "%d de %B"
     day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
     abbr_day_names: [Dom, Lun, Mar, Mie, Jue, Vie, Sab]

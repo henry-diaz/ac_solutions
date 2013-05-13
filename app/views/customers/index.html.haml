@@ -2,5 +2,27 @@
   = t("labels.manage_customers")
 %div.errors
   = draw_flash_messages
+
+= simple_form_for @q, url: customers_url, html: { class: "form-inline", method: :get} do |f|
+  = f.label :active_eq, t("labels.status")
+  = f.input_field :active_eq, as: :select, collection: Customer::STATUS.invert, include_blank: t("labels.all"), class: "input-small"
+  &nbsp
+  = f.label :kind_eq, t("labels.kind")
+  = f.input_field :kind_eq, as: :select, collection: Customer::KIND.invert, include_blank: t("labels.all"), class: "input-small"
+  &nbsp
+  = f.label :name_cont, t("labels.name")
+  = f.input_field :name_cont, class: "input-large"
+  &nbsp
+  = f.label :email_cont, t("labels.email")
+  = f.input_field :email_cont, class: "input-large"
+  %br
+  %br
+  = f.label :phone_cont, t("labels.phone")
+  = f.input_field :phone_cont, class: "input-medium"
+  &nbsp
+  = link_to t("labels.clean"), customers_url, class: "button alternative"
+  &nbsp
+  = f.submit t("labels.filter"), class: "button"
+
 #list-users
   = draw_customers(@customers)

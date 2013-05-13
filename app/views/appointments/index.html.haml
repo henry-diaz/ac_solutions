@@ -1,0 +1,17 @@
+#calendar
+  %h2#month
+    = link_to month: (@date.beginning_of_month-1).strftime("%Y-%m-01") do
+      %i.icon-arrow-left
+    = l @date, format: :month_and_year
+    = link_to month: (@date.end_of_month+1).strftime("%Y-%m-01") do
+      %i.icon-arrow-right
+  = calendar_for @appointments do |calendar|
+    = calendar.head('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado')
+    = calendar.day(day_method: :start_at) do |date, appointments|
+      = link_to date.day, new_appointment_url(appointment: { start_at: Time.now }), title: t("labels.create_appointment_for_day")
+      %ul
+        - for appointment in appointments
+          %li
+            - if current_user.role?(:admin) or appointment.user_id == current_user.id
+              = link_to raw("&times;"), appointment_url(appointment), method: :delete, confirm: "Esta seguro que desea eliminar esta cita?", class: "close"
+            = link_to appointment.title, edit_appointment_url(appointment)

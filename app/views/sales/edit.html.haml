@@ -1,17 +1,29 @@
 %div.errors
   = draw_flash_messages
-.clearfix
-  .pull-left
+
+.row.form-container
+  .span2
     %h3
       = t("labels.sales")
     = t("labels.customer")
     %span.info
       = sale.customer_name
-    = "&nbsp;&nbsp;|&nbsp;&nbsp;".html_safe
+    %br
     = t("labels.date")
-    %span.info
-      = sale.sale_date.try(:strftime, "%d/%m/%Y")
-%br
+    = text_field_tag "sale[sale_date]", sale.sale_date.try(:strftime, "%d/%m/%Y"), :'data-href' => sale_path(sale), :'data-method' => :put, class: "input-small"
+  .span2
+    %h3
+      = t("labels.kind")
+    = select_tag "sale[kind]", options_for_select(Sale::KIND.invert), :'data-href' => sale_path(sale), :'data-method' => :put, class: "input-medium"
+  .span2
+    %h3
+      = t("labels.number")
+    = text_field_tag "sale[number]", sale.number, :'data-href' => sale_path(sale), :'data-method' => :put, class: "input-medium"
+  .span3
+    %h3
+      = t("labels.comment")
+    = text_area :sale, :comment, value: sale.comment, data: { href: sale_path(sale), method: :put }, rows: 2
+
 = draw_sale_table(sale, @item)
 .clearfix
   .pull-right

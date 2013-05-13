@@ -1,0 +1,25 @@
+%p.select-task
+  = t("labels.manage_services")
+%div.errors
+  = draw_flash_messages
+
+= simple_form_for @q, url: services_url, html: { class: "form-inline", method: :get} do |f|
+  = f.label :code_cont, t("labels.code")
+  = f.input_field :code_cont, class: "input-medium"
+  &nbsp
+  = f.label :name_cont, t("labels.name")
+  = f.input_field :name_cont, class: "input-large"
+  &nbsp
+  = f.label :unit_price_gteq, t("labels.prices_from")
+  = f.input_field :unit_price_gteq, class: "input-mini"
+  &nbsp
+  = f.label :unit_price_lteq, t("labels.to")
+  = f.input_field :unit_price_lteq, class: "input-mini"
+  %br
+  %br
+  = link_to t("labels.clean"), services_url, class: "button alternative"
+  &nbsp
+  = f.submit t("labels.filter"), class: "button"
+
+#list-services
+  = draw_services(@services)

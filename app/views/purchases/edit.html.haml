@@ -1,14 +1,19 @@
 %div.errors
   = draw_flash_messages
 .row.form-container
-  .span3
+  .span2
     %h3
       = t("labels.purchases")
-    = t("labels.purchase_date_value", date: purchase.purchase_date.try(:strftime, "%d/%m/%Y"))
-  .span3
+    = t("labels.date")
+    = text_field_tag "purchase[purchase_date]", purchase.purchase_date.try(:strftime, "%d/%m/%Y"), :'data-href' => purchase_path(purchase), :'data-method' => :put, class: "input-small"
+  .span2
     %h3
-      = t("labels.bill_number")
-    = text_field_tag "purchase[number]", purchase.number, :'data-href' => purchase_path(purchase), :'data-method' => :put
+      = t("labels.kind")
+    = select_tag "purchase[kind]", options_for_select(Purchase::KIND.invert, purchase.kind), :'data-href' => purchase_path(purchase), :'data-method' => :put, class: "input-medium"
+  .span2
+    %h3
+      = t("labels.number")
+    = text_field_tag "purchase[number]", purchase.number, :'data-href' => purchase_path(purchase), :'data-method' => :put, class: "input-medium"
   .span3
     %h3
       = t("labels.comment")

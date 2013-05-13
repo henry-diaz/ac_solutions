@@ -1,0 +1,16 @@
+%p.select-task
+  = t("labels.new_appointment")
+.row
+  .span8.offset1
+    = simple_form_for appointment, url: appointments_path, html: { class: "form-horizontal", method: :post } do |f|
+      = f.input :customer_id, as: :select, collection: Customer.active.order("customers.name"), include_blank: t("labels.select"), input_html: { class: "input-medium" }
+      = f.input :name, input_html: { class: "input-xlarge" }
+      = f.input :description, as: :text, input_html: { class: "input-xlarge", rows: 2 }
+      = f.input :address, as: :text, input_html: { class: "input-xlarge", rows: 3 }
+      = f.input :start_at, as: :string, input_html: { class: "input-medium time-pick", value: appointment.start_at.try(:strftime, "%d/%m/%Y %H:%M") }
+      = f.input :come, as: :boolean
+      = f.association :users, as: :check_boxes, collection: User.all(order: 'first_name'), label_method: :full_name, checked: current_user.id
+      .control-group
+        .controls.right
+          = link_to t("labels.back"), appointments_url, :class => "button alternative"
+          = link_to t("labels.save"), "javascript:;", :class => "button submit-this"

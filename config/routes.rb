@@ -22,7 +22,18 @@ AcSolutions::Application.routes.draw do
     end
   end
   resources :members, except: [:show]
-  resources :reports
+  resources :reports, only: [:index] do
+    collection do
+      get 'inventories'
+      get 'sales'
+      get 'purchases'
+      get 'export_inventories'
+      get 'export_sales'
+      get 'export_purchases'
+      get 'tokenize_customers'
+      get 'tokenize_skus'
+    end
+  end
   resources :settings
   resources :appointments
   resources :customers do
@@ -32,6 +43,11 @@ AcSolutions::Application.routes.draw do
     end
   end
   resources :skus, except: [:destroy] do
+    member do
+      get 'toggle'
+    end
+  end
+  resources :services, except: [:destroy] do
     member do
       get 'toggle'
     end

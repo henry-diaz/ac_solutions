@@ -9,10 +9,16 @@ es:
     adjustment_create: Inventario inicial
     adjustment_edit: Inventario modificado
     admin: Administrador
+    all: Todos
+    appointment: Cita
     appointments: Citas
     back: Regresar
+    base_price: Precio base
+    bill: Factura
     bill_number: Número de factura
     charge: Cargo
+    clean: Limpiar
+    create_appointment_for_day: Crear cita para este día
     code: Código
     comment: Comentario
     company: Empresa
@@ -32,26 +38,36 @@ es:
     customer_updated_succesfully: Cliente actualizado satisfactoriamente
     customers: Clientes
     date: Fecha
+    date_short_value: "Fecha: %{date}"
     deactivate: Desactivar
     delete: Eliminar
+    description: Descripción
     edit: Editar
+    edit_appointment: Editar cita
     edit_contacts: Editar contactos
     edit_customer: Editar cliente
+    edit_service: Editar servicio
     edit_sku: Editar producto
     edit_user: Editar usuario
     email: Correo
     empty_password_no_change: En blanco para no actualizarla
     enter_your_email: Ingrese su correo
     error_save: "Se encontraron %{count} error(es)"
+    filter: Filtrar
     find: Buscar
     find_customer: Buscar cliente
-    find_customer_to_start: Para iniciar el proceso busque un cliente
+    find_customer_to_start: Para iniciar el proceso busque un cliente,<br>puede utilizar el código, nombre, teléfono o correo electrónico del cliente en la búsqueda.
     finish: Finalizar
     first_name: Nombres
+    fiscal: Fiscal
+    fiscal_credit: Crédito fiscal
     go: Ir
+    goods: Bienes
     hour: Hora
     i_forgot_my_password: He olvidado mi contraseña
     item_already_exist: Ya agrego el item a la lista
+    item_code: Código producto o servicio
+    item_name: Nombre producto o servicio
     inactive: Inactivo
     kind: Tipo
     last_name: Apellidos
@@ -59,14 +75,22 @@ es:
     manage_appointments: Administrar citas
     manage_customers: Administrar clientes
     manage_general_settings: Administrar configuraciones generales
+    manage_materials_and_products: Administrar materiales y productos
+    manage_services: Administrar servicios
     manage_skus: Administrar productos
     manage_users: Administrar usuarios
+    material: Material
+    materials: Materiales
+    materials_and_products: Materiales y productos
     name: Nombre
     new_purchase: "Nueva compra %{date}"
     natural_person: Persona natural
+    new_appointment: Nueva cita
     new_customer: Nuevo cliente
+    new_service: Nuevo servicio
     new_sku: Nuevo producto
     new_user: Nuevo usuario
+    number: Número
     operator: Operador
     out_of_sale_range: "excede el maximo de stock en inventario (%{number})"
     password: Contraseña
@@ -74,11 +98,15 @@ es:
     please_enter_a_valid_mail: "Por favor ingrese un formato válido. Ejemplo: usuario@dominio.com"
     phone: Teléfono
     price: Precio unitario
+    prices_from: Precios desde
+    product: Producto
+    products: Productos
     purchase: Compra
     purchase_deleted_succesfully: Compra eliminada satisfactoriamente
     purchase_date_value: "Fecha de la compra: %{date}"
     purchases: Compras
     quantity: Cantidad
+    quantity_from: Cantidad desde
     remember_me: Recordar contraseña
     remove: Eliminar
     reports: Reportes
@@ -92,8 +120,13 @@ es:
     select: Seleccione
     select_the_task: Seleccione la tarea que desea realizar
     send: Enviar
+    service: Servicio
+    service_added_succesfully: Servicio agregado satisfactoriamente
+    service_updated_succesfully: Servicio actualizado satisfactoriamente
+    services: Servicios
     settings: Configuraciones
     shopping: Compras
+    show_appointment: Mostrar cita
     sign_in: Ingresar
     sku_added_succesfully: Producto agregado satisfactoriamente
     sku_code: Código producto
@@ -103,9 +136,11 @@ es:
     skus: Productos
     status: Estado
     subtotal: Sub-total
+    to: Hasta
     today_purchases: Compras del día
     total: Total
     udb: Universidad Don Bosco
+    unit_price_from: Precio unitario desde
     update: Actualizar
     user: Usuario
     user_added_succesfully: Usuario agregado satisfactoriamente

@@ -6,6 +6,7 @@
       = f.input :code, input_html: { class: "input-medium" }
       = f.input :kind, as: :select, collection: Customer::KIND.invert, include_blank: t("labels.select"), input_html: { class: "input-medium" }
       = f.input :name, input_html: { class: "input-large" }
+      = f.input :email, input_html: { class: "input-large" }
       = f.input :phone, input_html: { class: "input-medium" }
       = f.input :address, input_html: { class: "input-xxlarge", rows: 3 }
       = f.input :description, input_html: { class: "input-xxlarge", rows: 3 }

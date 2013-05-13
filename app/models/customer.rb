@@ -1,11 +1,12 @@
 class Customer < ActiveRecord::Base
-  attr_accessible :code, :phone, :name, :contact, :address, :kind, :description
+  attr_accessible :code, :phone, :name, :contact, :address, :kind, :description, :email
 
   # constants
   INACTIVE = 0
   ACTIVE = 1
   STATUS = { INACTIVE => I18n.t("labels.inactive"), ACTIVE => I18n.t("labels.active") }
   KIND = { 'company' => I18n.t("labels.company"), 'natural' => I18n.t("labels.natural_person") }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   # relations
   has_many :sales, dependent: :destroy
@@ -17,6 +18,7 @@ class Customer < ActiveRecord::Base
   validates :name, :phone, length: { maximum: 200 }
   validates :kind, inclusion: { in: KIND.keys }
   validates :code, uniqueness: true, presence: true, length: { within: 4 .. 20 }
+  validates :email, format: { with: VALID_EMAIL_REGEX, message: I18n.t("labels.please_enter_a_valid_mail") }, allow_blank: true
 
   # ransacker
   ransacker :info do |parent|

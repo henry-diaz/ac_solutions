@@ -28,7 +28,7 @@ class CustomersController < ApplicationController
   end
 
   def find_customers
-    customers = Customer.active.limit(30).search(:info_cont => params[:term].gsub(' ','%')).result()
+    customers = Customer.active.limit(30).search(code_or_name_or_email_or_phone_cont: params[:term]).result()
     json = Array.new
     customers.each do |c|
       json << { :label => c.info, :value => c.info, :id => c.id }

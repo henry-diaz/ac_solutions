@@ -19,6 +19,7 @@ gem 'will_paginate'
 gem 'ransack'
 gem 'jquery-ui-rails'
 gem 'exception_notification', '~> 2.6.1'
+gem 'watu_table_builder', require: 'table_builder'
 
 # Gems used only for assets and not required
 # in production environments by default.

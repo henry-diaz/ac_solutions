@@ -1,0 +1,39 @@
+%p.select-task
+  = t("labels.show_appointment")
+.row
+  .span8.offset1
+    %dl
+      %dt
+        = t("labels.customer")
+      %dd
+        = appointment.customer_name
+      %dt
+        = t("labels.appointment")
+      %dd
+        = appointment.name
+      %dt
+        = t("labels.description")
+      %dd
+        = appointment.description
+      %dt
+        = t("labels.address")
+      %dd
+        = appointment.address
+      %dt
+        Fecha y hora
+      %dd
+        = appointment.start_at.try(:strftime, "%d/%m/%Y %H:%M")
+      %dt
+        Vienen?
+      %dd
+        = appointment.come == 1 ? "Si" : "No"
+      %dt
+        Participantes
+      %dd
+        - if appointment.users.size > 0
+          %ul.unstyled
+            - appointment.users.each do |user|
+              %li
+                = user.full_name
+    .right
+      = link_to t("labels.back"), appointments_url, :class => "button alternative"

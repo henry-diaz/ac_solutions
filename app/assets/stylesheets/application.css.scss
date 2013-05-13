@@ -185,6 +185,12 @@ input.alternative { height: 33px; }
 .add_link { padding-left: 20px; background: image-url("icons/add.png") 0 0 no-repeat transparent; color: #338000; }
 .add_link:hover { color: #42a500; }
 
+.activate_link { padding-left: 20px; background: image-url("icons/flag_3.png") 0 0 no-repeat transparent; color: #338000; }
+.activate_link:hover { color: #42a500; }
+
+.deactivate_link { padding-left: 20px; background: image-url("icons/flag_2.png") 0 0 no-repeat transparent; color: #f44c4a; }
+.deactivate_link:hover { color: #ce0b0b; }
+
 span.info { color: #023262; }
 span.negative { color: #ff0000; }
 
@@ -203,3 +209,26 @@ span.negative { color: #ff0000; }
   input { padding-right: 30px; width: 250px; }
   .find-icon { position: absolute; top: 9px; left: 248px; }
 }
+
+#calendar {
+  table { border-collapse: collapse; width: 100%; }
+  td, th { padding: 6px; border: 1px solid #999; }
+  td { background: #FFF; color: #777; height: 80px; vertical-align: top; font-size: 16px; }
+  th { background: #C7AE8F; color: #fff; text-align: center; width: 14.2857142857143%; }
+  .notmonth {
+    color: #CCC;
+    a { color: #ccc; text-decoration: underline; }
+  }
+  td a { color: #777; text-decoration: underline; }
+  #month { margin: 0; padding-top: 10px; padding-bottom: 10px; text-align: center; font-size: 15px; }
+  #month a, #month a:hover { text-decoration: none; padding: 0 10px; color: #999; }
+  .today { background-color: #E8DED1; }
+  ul { margin: 0; margin-top: 5px; padding: 0; list-style: none; }
+  li {
+    margin: 3px 0; padding: 0; font-size: 11px; text-align: center; background: #C7AE8F; @include border-radius(3px);
+    a { color: #fff; }
+    a.close { text-decoration: none; }
+  }
+}
+
+.ui-timepicker-div select { width: 100%; }

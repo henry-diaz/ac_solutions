@@ -3,11 +3,12 @@
 .row
   .span5.offset2
     = simple_form_for sku, url: sku_path(sku), html: { class: "form-horizontal", method: :put } do |f|
+      = f.input :kind, as: :radio, collection: Sku::KIND.invert
       = f.input :active, as: :boolean
-      = f.input :code, input_html: { class: "input-medium" }
+      = f.input :code, input_html: { class: "input-medium" }, required: true, hint: "El código es obligatorio para los productos"
       = f.input :name, input_html: { class: "input-large" }
       = f.input :quantity, input_html: { class: "input-medium" }
-      = f.input :unit_price, input_html: { class: "input-medium" }
+      = f.input :unit_price, input_html: { class: "input-medium" }, wrapper_html: { class: "only-product" }
       .control-group
         .controls.right
           = link_to t("labels.back"), request.referer || skus_url, :class => "button alternative"

@@ -11,7 +11,9 @@
         %thead
           %tr
             %th
-              = t("labels.bill_number")
+              = t("labels.kind")
+            %th
+              = t("labels.number")
             %th
               = t("labels.comment")
             %th{ :colspan => 2 }
@@ -19,6 +21,8 @@
         %tbody
           - purchases.each do |p|
             %tr{ :'data-number' => p.number }
+              %td.center
+                = link_to p.get_kind, edit_purchase_url(p), :class => "shortcut_sale"
               %td.center
                 = link_to p.number, edit_purchase_url(p), :class => "shortcut_sale"
               %td

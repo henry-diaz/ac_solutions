@@ -3,6 +3,7 @@
 .row
   .span5.offset2
     = simple_form_for purchase, url: purchases_path, html: { class: "form-horizontal", method: :post } do |f|
+      = f.input :kind, as: :radio, collection: Purchase::KIND.invert, input_html: { class: "input-medium" }
       = f.input :number, input_html: { class: "input-medium" }
       = f.input :comment, input_html: { class: "input-large" }
       = f.input :purchase_date, as: :hidden, input_html: { value: Date.today }

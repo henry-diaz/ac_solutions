@@ -23,11 +23,17 @@
     %br
     = t("labels.customers")
 
-  = link_to(skus_url, :class => "task #{current_user.role}", :title => t("labels.manage_skus")) do
+  = link_to(skus_url, :class => "task #{current_user.role}", :title => t("labels.manage_materials_and_products")) do
     = image_tag("modules/bg-go-module.png", :class => "play")
-    = image_tag("modules/stock-icon.png", :alt => t("labels.manage_skus"))
+    = image_tag("modules/stock-icon.png", :alt => t("labels.manage_materials_and_products"))
     %br
-    = t("labels.skus")
+    = t("labels.goods")
+
+  = link_to(services_url, :class => "task #{current_user.role}", :title => t("labels.manage_services")) do
+    = image_tag("modules/bg-go-module.png", :class => "play")
+    = image_tag("modules/services-icon.png", :alt => t("labels.manage_services"))
+    %br
+    = t("labels.services")
 
   = link_to(purchases_url, :class => "task #{current_user.role}", :title => t("labels.shopping")) do
     = image_tag("modules/bg-go-module.png", :class => "play")

@@ -3,24 +3,13 @@ class ItemsController < ApplicationController
   respond_to :js
 
   def create
-    sku_ids = parent.items.map(&:sku_id)
+    itemables = parent.items.map(&:itemable)
     @item = parent.items.new(params[:item])
-    if sku_ids.include?(@item.sku_id)
+    if itemables.include?(@item.itemable)
       flash[:alert] = t("labels.item_already_exist")
     else
       @success = @item.save
     end
-    #if @parent.is_a?(Sale) and !@parent.warehouse.stocks.map(&:sku_code).flatten.include? @item.sku_code and @item.sku.has_implicit?
-      #flash[:alert] = t("labels.item_not_in_stock")
-    #else
-      #skus_by_parent = @parent.items.unscoped.map(&:sku_code)
-      #if skus_by_parent.include?(params[:item][:sku_code])
-        #flash[:alert] = t("labels.item_already_exist")
-      #else
-        #@success = @item.save
-      #end
-      #skus_by_parent = nil
-    #end
   end
 
   def destroy

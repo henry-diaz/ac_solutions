@@ -36,18 +36,22 @@ class SalesController < ApplicationController
   end
 
   def search_by_code
-    @search = Sku.active.with_stock.where(code: params[:item_code]).first rescue nil
-    render :json => { :success => true, :sku => @search.as_json( only: [:code, :name, :unit_price], methods: [:sku_id] ) }
+    @skus = Sku.products.active.with_stock.where(code: params[:item_code]) rescue []
+    @services = Service.active.where(code: params[:item_code]) rescue []
+    @search = (@skus + @services).first
+    render :json => { :success => true, :sku => @search.as_json( only: [:code, :name, :unit_price], methods: [:itemable_id, :itemable_type] ) }
   end
 
   def search_by_name
-    @search = Sku.active.with_stock.where("name ilike ?", "%#{params[:item_name].gsub(' ', '%')}%").order("skus.code ASC")
-    render :json => { :success => true, :skus => @search.as_json( :only => [:code, :name, :unit_price], :methods => [:sku_id] ) }
+    @skus = Sku.products.active.with_stock.where("name ilike ?", "%#{params[:item_name].gsub(' ', '%')}%").order("skus.code ASC")
+    @services = Service.active.where("name ilike ?", "%#{params[:item_name].gsub(' ', '%')}%").order("services.code ASC")
+    @search = @skus + @services
+    render :json => { :success => true, :skus => @search.as_json( :only => [:code, :name, :unit_price], :methods => [:itemable_id, :itemable_type] ) }
   end
 
   private
     def sales
-      @sales ||= Sale.where(sale_date: Date.today)
+      @sales ||= Sale.where(created_at: Date.today .. Date.today + 1.day)
     end
     helper_method :sales
 

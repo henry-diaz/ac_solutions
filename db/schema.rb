@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130423075221) do
+ActiveRecord::Schema.define(:version => 20130513013351) do
 
   create_table "adjustments", :force => true do |t|
     t.date     "adjustment_date"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20130423075221) do
     t.text     "address"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+    t.string   "email"
   end
 
   add_index "customers", ["active"], :name => "index_customers_on_active"
@@ -112,15 +113,16 @@ ActiveRecord::Schema.define(:version => 20130423075221) do
   create_table "items", :force => true do |t|
     t.integer  "resourceable_id"
     t.string   "resourceable_type"
-    t.integer  "sku_id"
     t.integer  "quantity"
     t.decimal  "unit_price",        :precision => 8, :scale => 2, :default => 0.0
     t.datetime "created_at",                                                       :null => false
     t.datetime "updated_at",                                                       :null => false
+    t.integer  "itemable_id"
+    t.string   "itemable_type"
   end
 
+  add_index "items", ["itemable_id", "itemable_type"], :name => "index_items_on_itemable_id_and_itemable_type"
   add_index "items", ["resourceable_id", "resourceable_type"], :name => "index_items_on_resourceable_id_and_resourceable_type"
-  add_index "items", ["sku_id"], :name => "index_items_on_sku_id"
 
   create_table "liquidateds", :force => true do |t|
     t.date     "liquidated_date"
@@ -145,8 +147,9 @@ ActiveRecord::Schema.define(:version => 20130423075221) do
     t.string   "number"
     t.string   "comment"
     t.integer  "items_count",   :default => 0
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.string   "kind",          :default => "bill"
   end
 
   add_index "purchases", ["number"], :name => "index_purchases_on_number"
@@ -155,13 +158,25 @@ ActiveRecord::Schema.define(:version => 20130423075221) do
     t.integer  "status",      :default => 0
     t.date     "sale_date"
     t.integer  "customer_id"
-    t.string   "comment"
+    t.text     "comment"
     t.integer  "items_count", :default => 0
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.string   "kind",        :default => "bill"
+    t.integer  "number"
   end
 
   add_index "sales", ["customer_id"], :name => "index_sales_on_customer_id"
+
+  create_table "services", :force => true do |t|
+    t.integer  "active",                                    :default => 1
+    t.string   "code"
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "unit_price",  :precision => 8, :scale => 2, :default => 0.0
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
+  end
 
   create_table "skus", :force => true do |t|
     t.integer  "active",                                    :default => 1
@@ -170,8 +185,9 @@ ActiveRecord::Schema.define(:version => 20130423075221) do
     t.string   "name"
     t.decimal  "unit_price",  :precision => 8, :scale => 2, :default => 0.0
     t.integer  "quantity"
-    t.datetime "created_at",                                                 :null => false
-    t.datetime "updated_at",                                                 :null => false
+    t.datetime "created_at",                                                       :null => false
+    t.datetime "updated_at",                                                       :null => false
+    t.string   "kind",                                      :default => "product"
   end
 
   add_index "skus", ["active"], :name => "index_skus_on_active"

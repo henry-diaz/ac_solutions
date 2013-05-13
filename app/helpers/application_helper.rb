@@ -22,12 +22,15 @@ module ApplicationHelper
             rsl << link_to(members_url, :class => "shortcut #{controller_name == "members" ? "active" : ""} #{current_user.role}", :title => t("labels.manage_users")) do
                      image_tag("modules/users-icon-small.png", :alt => t("labels.manage_users")) + "<br>".html_safe + t("labels.users")
                    end
-            rsl << link_to(customers_url, :class => "shortcut #{controller_name == "customers" ? "active" : ""} #{current_user.role}", :title => t("labels.manage_customers")) do
-                     image_tag("modules/customers-icon-small.png", :alt => t("labels.manage_customers")) + "<br>".html_safe + t("labels.customers")
-                   end
           end
-          rsl << link_to(skus_url, :class => "shortcut #{controller_name == "skus" ? "active" : ""} #{current_user.role}", :title => t("labels.manage_skus")) do
-                   image_tag("modules/stock-icon-small.png", :alt => t("labels.manage_skus")) + "<br>".html_safe + t("labels.skus")
+          rsl << link_to(customers_url, :class => "shortcut #{controller_name == "customers" ? "active" : ""} #{current_user.role}", :title => t("labels.manage_customers")) do
+                   image_tag("modules/customers-icon-small.png", :alt => t("labels.manage_customers")) + "<br>".html_safe + t("labels.customers")
+                 end
+          rsl << link_to(skus_url, :class => "shortcut #{controller_name == "skus" ? "active" : ""} #{current_user.role}", :title => t("labels.manage_materials_and_products")) do
+                   image_tag("modules/stock-icon-small.png", :alt => t("labels.manage_materials_and_products")) + "<br>".html_safe + t("labels.goods")
+                 end
+          rsl << link_to(services_url, :class => "shortcut #{controller_name == "services" ? "active" : ""} #{current_user.role}", :title => t("labels.manage_services")) do
+                   image_tag("modules/services-icon-small.png", :alt => t("labels.manage_services")) + "<br>".html_safe + t("labels.services")
                  end
           rsl << link_to(purchases_url, :class => "shortcut #{controller_name == "purchases" ? "active" : ""} #{current_user.role}", :title => t("labels.shopping")) do
                    image_tag("modules/purchases-icon-small.png", :alt => t("labels.shopping")) + "<br>".html_safe + t("labels.shopping")

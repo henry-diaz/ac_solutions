@@ -5,8 +5,8 @@ module SalesHelper
     rsl << %(<table class="table table-striped table-condensed">)
       rsl << %(<thead>)
         rsl << %(<tr>)
-          rsl << %(<th>#{t("labels.sku_code")}</th>)
-          rsl << %(<th>#{t("labels.sku_name")}</th>)
+          rsl << %(<th>#{t("labels.item_code")}</th>)
+          rsl << %(<th>#{t("labels.item_name")}</th>)
           rsl << %(<th>#{t("labels.price")}</th>)
           rsl << %(<th>#{t("labels.quantity")}</th>)
           rsl << %(<th>#{t("labels.subtotal")}</th>)
@@ -30,8 +30,8 @@ module SalesHelper
   def draw_sale_row sale, item
     rsl = ""
     rsl << %(<tr class="row-grid" data-id="#{item.id}">)
-      rsl << %(<td>#{item.sku_code}</td>)
-      rsl << %(<td>#{item.sku_name}</td>)
+      rsl << %(<td>#{item.item_code}</td>)
+      rsl << %(<td>#{item.item_name}</td>)
       rsl << %(<td class="center">#{number_to_currency(item.unit_price, :negative_format => "<span class='negative'>(%u%n)</span>")}</td>)
       rsl << %(<td class="center">#{item.quantity}</td>)
       rsl << %(<td class="center">#{number_to_currency(item.subtotal, :negative_format => "<span class='negative'>(%u%n)</span>")}</td>)
@@ -44,8 +44,8 @@ module SalesHelper
   def draw_edit_sale_row sale, item
     rsl = ""
     rsl << %(<tr class="row-grid form-container" data-id="#{item.id}" data-edit=true>)
-    rsl << %(<td>#{item.sku_code}</td>)
-    rsl << %(<td>#{item.sku_name}</td>)
+    rsl << %(<td>#{item.item_code}</td>)
+    rsl << %(<td>#{item.item_name}</td>)
     rsl << %(<td class="center">#{text_field_tag("item[unit_price]", item.unit_price, :class => "input-mini")}</td>)
     rsl << %(<td class="center">#{text_field_tag("item[quantity]", item.quantity, :class => "input-mini")}</td>)
     rsl << %(<td class="center"></td>)

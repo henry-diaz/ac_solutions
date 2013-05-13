@@ -1,0 +1,14 @@
+%p.select-task
+  = t("labels.edit_service")
+.row
+  .span5.offset2
+    = simple_form_for service, url: service_path(service), html: { class: "form-horizontal", method: :put } do |f|
+      = f.input :active, as: :boolean
+      = f.input :code, input_html: { class: "input-medium" }
+      = f.input :name, input_html: { class: "input-xlarge" }
+      = f.input :unit_price, input_html: { class: "input-medium" }
+      = f.input :description, input_html: { class: "input-xlarge", rows: 3 }
+      .control-group
+        .controls.right
+          = link_to t("labels.back"), request.referer || services_url, :class => "button alternative"
+          = link_to t("labels.update"), "javascript:;", :class => "button submit-this"

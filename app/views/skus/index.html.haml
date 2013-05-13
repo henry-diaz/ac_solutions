@@ -1,6 +1,37 @@
 %p.select-task
-  = t("labels.manage_skus")
+  = t("labels.manage_materials_and_products")
 %div.errors
   = draw_flash_messages
+
+= simple_form_for @q, url: skus_url, html: { class: "form-inline", method: :get} do |f|
+  = f.label :kind_eq, t("labels.kind")
+  = f.input_field :kind_eq, as: :select, collection: Sku::KIND.invert, include_blank: t("labels.all"), class: "input-small"
+  &nbsp
+  = f.label :active_eq, t("labels.status")
+  = f.input_field :active_eq, as: :select, collection: Sku::STATUS.invert, include_blank: t("labels.all"), class: "input-small"
+  &nbsp
+  = f.label :code_cont, t("labels.code")
+  = f.input_field :code_cont, class: "input-medium"
+  &nbsp
+  = f.label :name_cont, t("labels.name")
+  = f.input_field :name_cont, class: "input-large"
+  %br
+  %br
+  = f.label :quantity_gteq, t("labels.quantity_from")
+  = f.input_field :quantity_gteq, class: "input-mini"
+  &nbsp
+  = f.label :quantity_lteq, t("labels.to")
+  = f.input_field :quantity_lteq, class: "input-mini"
+  &nbsp
+  = f.label :unit_price_gteq, t("labels.unit_price_from")
+  = f.input_field :unit_price_gteq, class: "input-mini"
+  &nbsp
+  = f.label :unit_price_lteq, t("labels.to")
+  = f.input_field :unit_price_lteq, class: "input-mini"
+  &nbsp
+  = link_to t("labels.clean"), skus_url, class: "button alternative"
+  &nbsp
+  = f.submit t("labels.filter"), class: "button"
+
 #list-skus
   = draw_skus(@skus)
