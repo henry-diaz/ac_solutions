@@ -30,6 +30,13 @@ class Sku < ActiveRecord::Base
   after_create :first_adjustment
   before_update :edit_adjustment
 
+  # ransacker
+  ransacker :info do |parent|
+    Arel::Nodes::InfixOperation.new('||',
+      Arel::Nodes::InfixOperation.new('||', parent.table[:code], ' '),
+      parent.table[:name])
+  end
+
   # methods
   def status
     STATUS[active] || ""
@@ -67,6 +74,30 @@ class Sku < ActiveRecord::Base
 
   def is_material?
     kind == "material"
+  end
+
+  def info
+    [code,name].join(" ")
+  end
+
+  def self.by_filters options
+    scope = scoped
+    if options[:quantity_lteq] and options[:quantity_gteq]
+      scope = scope.where(:quantity => options[:quantity_gteq] .. options[:quantity_lteq])
+    elsif options[:quantity_lteq]
+      scope = scope.where("skus.quantity <= ?", options[:quantity_lteq])
+    elsif options[:quantity_gteq]
+      scope = scope.where("skus.quantity >= ?", options[:quantity_gteq])
+    end
+    scope = scope.where(:id => options[:id_in]) if options[:id_in]
+    if options[:kind_in].include?('product') and options[:kind_in].include?('material')
+      # do nothing
+    elsif options[:kind_in].include?('product')
+      scope = scope.where(:kind => "product" )
+    elsif  options[:kind_in].include?('material')
+      scope = scope.where(:kind => "material" )
+    end
+    scope
   end
 
 end

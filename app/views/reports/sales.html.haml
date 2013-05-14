@@ -1,0 +1,70 @@
+%p.select-task
+  Reporte de ventas
+= form_for :q, :url => { :controller => "reports", :action => "sales" }, :html => { :class => "form-horizontal", :method => :get }, :remote => true do |f|
+  .row
+    .span2
+      %label.control-label
+        Desde
+    .span2
+      = f.text_field :sale_date_gteq, :value => @options[:sale_date_gteq].try(:strftime, "%d/%m/%Y"), :class => "date-pick input-small"
+    .span2
+      %label.control-label
+        Hasta
+    .span2
+      = f.text_field :sale_date_lteq, :value => @options[:sale_date_lteq].try(:strftime, "%d/%m/%Y"), :class => "date-pick input-small"
+  %br
+  .row
+    .span2
+      = f.label :customer_id_in, t("labels.customers"), :class => 'control-label'
+    .span7
+      = f.text_field :customer_id_in
+      %i
+        Haga uso del buscador para filtrar, si desea mostrarlos todos
+        = link_to "limpie los seleccionados", "javascript:;", class: 'reset-tokens'
+  %br
+  .row
+    .span2
+      = f.label :kind_in, "Tipo de venta", :class => 'control-label'
+    .span7
+      %label.checkbox{ :for => "q_kind_in_bill" }
+        = check_box_tag 'q[kind_in][]', 'bill', @options[:kind_in].include?('bill'), :id => "q_kind_in_bill"
+        Factura
+      %label.checkbox{ :for => "q_kind_in_fiscal" }
+        = check_box_tag 'q[kind_in][]', 'fiscal', @options[:kind_in].include?('fiscal'), :id => "q_kind_in_fiscal"
+        Crédito fiscal
+  %br
+  .row
+    .span2
+      = f.label :klass_in, "Tipo de items", :class => 'control-label'
+    .span7
+      %label.checkbox{ :for => "q_klass_in_sku" }
+        = check_box_tag 'q[klass_in][]', 'Sku', @options[:klass_in].include?('Sku'), :id => "q_klass_in_sku"
+        Productos
+      %label.checkbox{ :for => "q_klass_in_service" }
+        = check_box_tag 'q[klass_in][]', 'Service', @options[:klass_in].include?('Service'), :id => "q_klass_in_service"
+        Servicios
+  %br
+  .row
+    .span2
+      = f.label :sku_id_in, "Lista de productos", :class => 'control-label'
+    .span7
+      = f.text_field :sku_id_in
+      %i
+        Haga uso del buscador para filtrar, si desea mostrarlos todos
+        = link_to "limpie los seleccionados", "javascript:;", class: 'reset-tokens'
+  %br
+  .row
+    .span2
+      = f.label :service_id_in, "Lista de servicios", :class => 'control-label'
+    .span7
+      = f.text_field :service_id_in
+      %i
+        Haga uso del buscador para filtrar, si desea mostrarlos todos
+        = link_to "limpie los seleccionados", "javascript:;", class: 'reset-tokens'
+  %br
+  .clearfix
+    .pull-right
+      = f.submit "Filtrar", :class => "button"
+%br
+#report-list
+  = draw_sales_report(@items)

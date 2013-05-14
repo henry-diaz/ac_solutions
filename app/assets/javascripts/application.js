@@ -270,10 +270,40 @@ $(function(){
     }
   });
 
+  $("#q_customer_id_in").tokenInput("/reports/tokenize_customers", {
+      theme: "facebook",
+      minChars: 3,
+      hintText: "Escriba el código o nombre del cliente a agregar",
+      noResultsText: "No se encontro ninguna coincidencia",
+      searchingText: "Buscando...",
+      preventDuplicates: true
+  });
+  $("#q_sku_id_in, #q_id_in").tokenInput("/reports/tokenize_skus", {
+      theme: "facebook",
+      minChars: 3,
+      hintText: "Escriba el código o nombre del producto a agregar",
+      noResultsText: "No se encontro ninguna coincidencia",
+      searchingText: "Buscando...",
+      preventDuplicates: true
+  });
+  $("#q_service_id_in").tokenInput("/reports/tokenize_services", {
+      theme: "facebook",
+      minChars: 3,
+      hintText: "Escriba el código o nombre del servicio a agregar",
+      noResultsText: "No se encontro ninguna coincidencia",
+      searchingText: "Buscando...",
+      preventDuplicates: true
+  });
+  $("a.reset-tokens").off();
+  $(document).on("click", "a.reset-tokens", function(e){
+    $(this).closest("div").find("#q_customer_id_in, #q_sku_id_in, #q_service_id_in, #q_id_in").tokenInput("clear");
+  });
+
 });
 
 $.clear_form = function(form, element) {
   $(':input', form).not(':button, :submit, :reset').not(element).val('');
+  $('input:first', form).focus();
 };
 
 $.draw_result_search = function(skus) {

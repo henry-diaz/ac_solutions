@@ -191,6 +191,8 @@ input.alternative { height: 33px; }
 .deactivate_link { padding-left: 20px; background: image-url("icons/flag_2.png") 0 0 no-repeat transparent; color: #f44c4a; }
 .deactivate_link:hover { color: #ce0b0b; }
 
+.csv_link { background: image-url("icons/page_next.gif") no-repeat scroll 0 0 transparent; padding-left: 20px; }
+
 span.info { color: #023262; }
 span.negative { color: #ff0000; }
 
@@ -232,3 +234,5 @@ span.negative { color: #ff0000; }
 }
 
 .ui-timepicker-div select { width: 100%; }
+
+#main-content .content ul.token-input-list-facebook { width: 100%; }

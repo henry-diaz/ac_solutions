@@ -32,6 +32,7 @@ AcSolutions::Application.routes.draw do
       get 'export_purchases'
       get 'tokenize_customers'
       get 'tokenize_skus'
+      get 'tokenize_services'
     end
   end
   resources :settings

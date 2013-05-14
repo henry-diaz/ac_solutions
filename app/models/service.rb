@@ -17,6 +17,13 @@ class Service < ActiveRecord::Base
   validates :code, presence: true, uniqueness: { case_sensitive: false }, length: { within: 4 .. 20 }
   validates :unit_price, presence: true, numericality: { greater_than: 0, less_than: 1000000 }
 
+  # ransacker
+  ransacker :info do |parent|
+    Arel::Nodes::InfixOperation.new('||',
+      Arel::Nodes::InfixOperation.new('||', parent.table[:code], ' '),
+      parent.table[:name])
+  end
+
   # methods
   def status
     STATUS[active] || ""
@@ -32,5 +39,9 @@ class Service < ActiveRecord::Base
 
   def itemable_type
     self.class.to_s
+  end
+
+  def info
+    [code,name].join(" ")
   end
 end
