@@ -44,8 +44,8 @@ module PurchasesHelper
   def draw_edit_purchase_row purchase, item
     rsl = ""
     rsl << %(<tr class="row-grid form-container" data-id="#{item.id}" data-edit=true>)
-    rsl << %(<td>#{item.itemable_code}</td>)
-    rsl << %(<td>#{item.itemable_name}</td>)
+    rsl << %(<td>#{item.item_code}</td>)
+    rsl << %(<td>#{item.item_name}</td>)
     rsl << %(<td class="center">#{text_field_tag("item[unit_price]", item.unit_price, :class => "input-mini")}</td>)
     rsl << %(<td class="center">#{text_field_tag("item[quantity]", item.quantity, :class => "input-mini")}</td>)
     rsl << %(<td class="center"></td>)

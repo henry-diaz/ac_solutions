@@ -98,6 +98,7 @@ es:
         quantity: Cantidad
         unit_price: Precio unitario
       service:
+        active: Activo
         code: Código
         name: Nombre
         unit_price: Precio base

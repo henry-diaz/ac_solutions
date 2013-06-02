@@ -15,7 +15,7 @@ class Appointment < ActiveRecord::Base
   has_and_belongs_to_many :users
 
   # validations
-  validates :start_at, valid_date: true, on: :create
+  validates :start_at, valid_date: true
   validates :customer_id, presence: true
 
   # delegates
@@ -27,7 +27,11 @@ class Appointment < ActiveRecord::Base
   end
 
   def self.by_user user
-    joins(:users).where("appointments.user_id = :user_id or users.id = :user_id", user_id: user.id).uniq
+    if user.role?(:admin)
+      scoped
+    else
+      joins(:users).where("appointments.user_id = :user_id or users.id = :user_id", user_id: user.id).uniq
+    end
   end
 
   def self.by_date date = Date.today

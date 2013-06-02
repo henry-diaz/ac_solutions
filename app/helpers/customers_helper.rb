@@ -26,7 +26,7 @@ module CustomersHelper
             rsl << %(<td>#{c.phone}</td>)
             rsl << %(<td>#{c.address}</td>)
             rsl << %(<td>#{link_to(t("labels.edit"), edit_customer_url(c), :class => "edit_link")}</td>)
-            rsl << %(<td>#{link_to(t("labels.delete"), customer_url(c), :class => "remove_link", :method => :delete, :confirm => t("labels.confirm_delete_customer"))}</td>)
+            rsl << %(<td>#{current_user.role?(:admin) ? link_to(t("labels.delete"), customer_url(c), :class => "remove_link", :method => :delete, :confirm => t("labels.confirm_delete_customer")) : ""}</td>)
           rsl << %(</tr>)
         end
       rsl << %(</tbody>)

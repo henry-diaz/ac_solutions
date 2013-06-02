@@ -22,7 +22,7 @@ module MembersHelper
             rsl << %(<td>#{u.last_name}</td>)
             rsl << %(<td>#{u.get_role}</td>)
             rsl << %(<td>#{link_to(t("labels.edit"), edit_member_url(u), :class => "edit_link")}</td>)
-            rsl << %(<td>#{link_to(t("labels.delete"), member_url(u), :class => "remove_link", :method => :delete, :confirm => t("labels.confirm_delete_user"))}</td>)
+            rsl << %(<td>#{link_to(t("labels.delete"), member_url(u), :class => "remove_link", :method => :delete, :confirm => t("labels.confirm_delete_user")) unless current_user.id == u.id}</td>)
           rsl << %(</tr>)
         end
       rsl << %(</tbody>)
